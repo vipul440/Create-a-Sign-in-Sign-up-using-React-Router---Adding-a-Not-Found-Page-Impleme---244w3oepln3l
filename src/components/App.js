@@ -11,17 +11,17 @@ const App = () => {
 //code for  Route path="/" , Route path="/dashboard" 
 
   const [loggedIn,setLoggedIn]=useState(false)
- const [navigate,setNavigate]=useState(false)
+  const [navigate,setNavigate]=useState(false)
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
   return (
 
-<div id='App'>
-  <Router>
+ <div id='App'>
+   <Router>
     
-    <Switch>
+     <Switch>
       <Route path="/" exact>
-     <Login email={email} password={password} setLoggedIn={setLoggedIn} setNavigate={setNavigate}/>
+      {loggedIn ? <Redirect to="/dashboard"/>: <Login email={email} password={password} setLoggedIn={setLoggedIn} setNavigate={setNavigate}/>}
       </Route>
       
       <Route path="/Register" exact>
@@ -36,6 +36,5 @@ const App = () => {
 </div>
   )
 }
-
 
 export default App;
